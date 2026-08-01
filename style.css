@@ -1,0 +1,116 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #000;
+    overflow: hidden;
+    margin: 0;
+}
+
+.font-handwriting {
+    font-family: 'Caveat', cursive;
+}
+
+/* Alur Transisi Halaman Ringan & Cepat */
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: scale(0.98);
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* Glitch Effect Tahap 1 */
+.glitch {
+    animation: glitch 0.3s linear infinite alternate;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px #ff007f; }
+    100% { text-shadow: -2px -2px #00ffff; }
+}
+
+/* Efek Bintang Latar Belakang */
+.stars {
+    background: radial-gradient(white, rgba(255,255,255,0.15) 1px, transparent 30px);
+    background-size: 40px 40px;
+    animation: twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.9; }
+}
+
+/* Animasi Mengapung Karakter */
+.float-anim {
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* Partikel Melayang (Sparkles) */
+.sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fly 3.5s linear infinite;
+}
+
+@keyframes fly {
+    0% { transform: translateY(105vh) scale(0); opacity: 0; }
+    50% { opacity: 0.7; }
+    100% { transform: translateY(-5vh) scale(1); opacity: 0; }
+}
+
+/* Foto Polaroid Interaktif */
+.polaroid {
+    background: white;
+    padding: 5px 5px 15px 5px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+    border-radius: 2px;
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.polaroid:hover {
+    box-shadow: 0 10px 20px rgba(255, 0, 127, 0.4);
+    z-index: 50 !important;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Bubble Chat Notifikasi Lucu */
+#jokeBubble {
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translate(-50%, 20px) scale(0.8);
+    opacity: 0;
+}
+
+#jokeBubble.show {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+}
